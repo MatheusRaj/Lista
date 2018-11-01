@@ -1,17 +1,51 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import 'rxjs/add/operator/map';
+import { Storage } from '@ionic/storage';
+import { DatePipe } from '@angular/common';
 
-/*
-  Generated class for the ListaProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class ListaProvider {
 
-  constructor(public http: HttpClient) {
-    console.log('Hello ListaProvider Provider');
+  constructor(private storage: Storage, private datepipe: DatePipe) { }
+
+  public insert(item: Item) {
+    let key = this.datepipe.transform(new Date(), "ddMMyyyyHHmmss" );
+    return this.save(key, item);
   }
 
+  private save(key: string, item: Item) {
+    return this.storage.set(key, item);
+  }
+
+  public remove(key: string) {
+    return this.storage.remove(key);
+  }
+
+  public getAll() {
+
+    let items: ItemList[] = [];
+
+    return this.storage.forEach((value: Item, key: string, iterationNumber: Number) => {
+      let item = new ItemList();
+      item.key = key;
+      item.item = value;
+      items.push(item);
+    })
+    .then(() => {
+      return Promise.resolve(items);
+    })
+    .catch((error) => {
+      return Promise.reject(error);
+    })
+  }
+}
+
+export class Item {
+  name: string;
+  score: Number;
+}
+
+export class ItemList {
+  key: string;
+  item: Item;
 }

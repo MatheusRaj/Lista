@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the AnimesPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { ListaProvider, ItemList } from '../../providers/lista/lista';
 
 @IonicPage()
 @Component({
@@ -15,7 +9,28 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class AnimesPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  items: ItemList[];
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private listaProvider: ListaProvider, private toast: ToastController) { }
+
+  ionViewDidEnter() {
+    this.listaProvider.getAll()
+    .then((result) => {
+      this.items = result;
+    });
+  }
+
+  addItem() {
+    this.navCtrl.push('EditAnimePage');
+  }
+
+  removeItem(item: ItemList) {
+    this.listaProvider.remove(item.key)
+    .then(() => {
+      var index = this.items.indexOf(item);
+      this.items.splice(index,1);
+      this.toast.create({ message: 'Anime removido.', duration: 3000, position: 'botton' }).present();
+    })
   }
 
   ionViewDidLoad() {

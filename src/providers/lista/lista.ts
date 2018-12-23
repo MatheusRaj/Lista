@@ -42,7 +42,7 @@ export class ListaProvider {
 
 export class Item {
   name: string;
-  score: Number;
+  score: number;
 }
 
 export class ItemList {

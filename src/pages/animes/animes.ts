@@ -16,7 +16,11 @@ export class AnimesPage {
   ionViewDidEnter() {
     this.listaProvider.getAll()
     .then((result) => {
-      this.items = result;
+      this.items = result.sort((n1,n2) => {
+
+        return n2.item.score - n1.item.score;
+
+      });
     });
   }
 

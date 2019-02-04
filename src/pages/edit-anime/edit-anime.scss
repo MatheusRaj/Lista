@@ -1,3 +1,131 @@
-page-edit-anime {
+page-edit-anime,
+page-home,
+.home {
 
+  ion-content {
+    background-color: white ;
+  }
+
+
+  .toolbar-background { background-color: transparent !important; }
+
+  .bar-button-default-md, .bar-button-clear-md-default, .bar-button-md-default {
+    color: white ;
+  }
+
+  .btn_home {
+
+    color: black;
+    height: 90px;
+
+    img {
+      width: 40%;
+      margin-bottom: 5px ;
+    }
+
+
+    a {
+      color:black ;
+      width: 95%;
+      margin: auto;
+      height: 80px;
+      padding: 5px;
+      text-align: center;
+      background: white;
+      position: absolute;
+    }
+
+    ion-icon {
+      font-size: 32px;
+      margin-bottom: 6px;
+    }
+
+  }
+
+  .scroll-content {
+    padding-bottom: 5rem;
+  }
+
+  .float-search {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 1rem;
+
+    button {
+      position: absolute;
+      margin: 0.4rem 0.2rem;
+      left: 1.4rem;
+      top: 1.2rem;
+      height: 2.4em;
+      box-shadow: none;
+
+      &.activated {
+        background: none;
+      }
+    }
+
+    ion-input {
+      padding-left: 5rem;
+    }
+  }
+
+  ion-header {
+
+    background-image: linear-gradient(to bottom right, #D11E41, #FF7D5A);
+    background-size: 100% auto;
+  }
+
+  // list of items
+  .block-title {
+    line-height: 2rem;
+
+    ion-icon {
+      font-size: 2rem;
+    }
+  }
+
+  .items {
+    overflow-x: auto;
+    white-space: nowrap;
+
+    .card {
+      overflow: hidden;
+      width: 25rem;
+      display: inline-block;
+      margin-right: 1.6rem;
+
+      span[gray] {
+        font-size: 1.2rem;
+      }
+
+      .pull-left {
+        max-width: 18rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: color($colors, restaurant-color);
+      }
+    }
+  }
+}
+
+.md {
+  .home {
+
+    .float-search {
+
+      button {
+        top: 1.6rem;
+      }
+
+      ion-input {
+        padding-left: 4rem;
+      }
+    }
+
+    .tab-button-text {
+      margin-top: 0;
+    }
+  }
 }

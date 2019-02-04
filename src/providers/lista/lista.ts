@@ -13,6 +13,10 @@ export class ListaProvider {
     return this.save(key, item);
   }
 
+  public update(item: Item, key: string) {
+    return this.save(key, item);
+  }
+
   private save(key: string, item: Item) {
     return this.storage.set(key, item);
   }

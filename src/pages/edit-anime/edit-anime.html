@@ -25,4 +25,38 @@
 
   <button ion-button block (click)="save()">Salvar</button>
 
+  <div class="row" text-center style="margin-top:17px ;">
+    <div class="col">
+      <small>Publicidade</small>
+      <img src="{{banner}}">
+      <hr />
+    </div>
+  </div>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div class="row">
+    <div class="col btn_home" (click)="restaurant('Gastronomia', 'gastronomia')">
+      <a><img src="./assets/img/food.png"><br />Gastrônomia</a>
+    </div>
+    <div class="col btn_home" (click)="hotel('Hospedagem', 'hospedagem')">
+      <a><img src="./assets/img/hotel.png"><br />Hospedagem</a>
+    </div>
+    <div class="col btn_home" (click)="redor()">
+      <a><img src="./assets/img/mapa.png"><br />Ao meu redor</a>
+    </div>
+  </div>
+  <div class="row" style="margin-top:3px;">
+    <div class="col btn_home" (click)="roteiros()">
+      <a><img src="./assets/img/roteiro.png"><br />Roteiros</a>
+    </div>
+    <div class="col btn_home" (click)="pontos()">
+      <a><img src="./assets/img/turismo.png"><br />Pontos Turísticos</a>
+    </div>
+    <div class="col btn_home" (click)="categorias()">
+      <a><img src="./assets/img/categoria.png"><br />Categorias</a>
+    </div>
+  </div>
+
 </ion-content>

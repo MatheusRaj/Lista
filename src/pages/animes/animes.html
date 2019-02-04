@@ -1,42 +1,35 @@
 <ion-header>
-
   <ion-navbar>
     <ion-title>Animes</ion-title>
   </ion-navbar>
-
 </ion-header>
 
-
 <ion-content padding>
-
   <ion-list>
-
     <ion-card *ngFor="let item of items">
-
       <ion-row>
-
         <ion-col col-9>
           <h1>{{ item.item.name }}</h1>
         </ion-col>
         <ion-col col-3>
           <h1>{{ item.item.score }}</h1>
         </ion-col>
-
       </ion-row>
-
       <ion-row text-center>
-
         <ion-col>
           <button ion-button icon-left clear small (click)="removeItem(item);">
             <ion-icon name="trash"></ion-icon>
             <div>Excluir</div>
           </button>
         </ion-col>
-
+        <ion-col>
+          <button ion-button icon-left clear small (click)="editItem(item.item, item.key);">
+            <ion-icon name="create"></ion-icon>
+            <div>Editar</div>
+          </button>
+        </ion-col>
       </ion-row>
-
     </ion-card>
-
   </ion-list>
 
   <ion-fab right bottom>

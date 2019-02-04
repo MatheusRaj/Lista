@@ -14,8 +14,13 @@ export class EditAnimePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private listaProvider: ListaProvider, private toast: ToastController) {
 
-    this.model = new Item;
-
+    if(this.navParams.data.item && this.navParams.data.key) {
+      this.model = this.navParams.data.item;
+      this.key = this.navParams.data.key;
+    }
+    else {
+      this.model = new Item;
+    }
   }
 
   save() {
@@ -26,12 +31,15 @@ export class EditAnimePage {
     .catch(() => {
       this.toast.create({ message: 'Erro ao salvar o anime.', duration: 3000, position: 'botton' }).present();
     });
+    this.navCtrl.pop();
   }
 
   private saveItem() {
-
-    return this.listaProvider.insert(this.model);
-
+    if (this.key) {
+      return this.listaProvider.update(this.model, this.key);
+    } else {
+      return this.listaProvider.insert(this.model);
+    }
   }
 
   ionViewDidLoad() {
